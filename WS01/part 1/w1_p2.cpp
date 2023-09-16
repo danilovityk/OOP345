@@ -41,8 +41,9 @@ int main (int argc, char** argv)
 	// Don't use "magic numbers": https://en.wikipedia.org/wiki/Magic_number_(programming)
     
     for (int i = 0; i < argc; i++)
+    {
         std::cout << i+1 << ": " << argv[i] << std::endl;
-    
+    }
 	std::cout << "--------------------------\n\n";
 
 	// Keep a record of the *Home* rides separately
