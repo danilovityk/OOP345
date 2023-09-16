@@ -23,7 +23,7 @@ namespace sdds{
         if (istr){
             size_t sizet = 0;
             
-            char temp_flag;
+            char temp_flag{};
             char details[100];
             
             istr.get(m_name, 9, ',');
