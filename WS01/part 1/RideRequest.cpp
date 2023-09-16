@@ -77,11 +77,11 @@ namespace sdds{
             
             cout << left << setw(10) << m_name << '|';
             cout << left << setw(25) << m_details << '|';
-            cout << left << setw(12) << setprecision(2) << fixed << (m_price * g_discount) << '|';
+            cout << left << setw(12) << setprecision(2) << fixed << (m_price + (m_price * g_taxrate)) << '|';
             cout << left << setw(13);
             
             if (m_discount)
-                cout << right << setprecision(2) << (m_price * g_discount * g_taxrate);
+                cout << right << setprecision(2) << (m_price + (m_price * g_taxrate) - g_discount);
             
             
             
