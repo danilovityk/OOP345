@@ -36,7 +36,7 @@ namespace sdds{
             delete m_details;
             sizet = strlen(details);
             int size = (int)sizet;
-            m_details = new char [size + 1];
+            m_details = new char [size + 1]{};
             
             for(int i = 0; i < size; i++){
                 m_details[i] = details[i];
@@ -114,7 +114,7 @@ sdds::RideRequest &RideRequest::operator=(const sdds::RideRequest &source)
         
         size_t sizet = strlen(source.m_details);
         int size = (int)sizet;
-        m_details = new char[size+1];
+        m_details = new char[size+1]{};
         
         for(int i = 0; i < size; i++)
         {
