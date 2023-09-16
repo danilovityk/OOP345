@@ -12,7 +12,7 @@ namespace sdds{
     RideRequest::RideRequest() {
         
         m_name[0] = '\0';
-        m_details[0] = '\0';
+        m_details = nullptr;
         m_price = 0;
         m_discount = false;
         
@@ -20,13 +20,24 @@ namespace sdds{
 
     std::istream &RideRequest::read(std::istream &istr) {
         if (istr){
+            size_t size = 0;
             char temp_flag;
+            char details[100];
             
             istr.get(m_name, 9, ',');
             istr.ignore();
+           
             
-            istr.get(m_details, 24, ',');
+            istr.get(details, 100, ',');
             istr.ignore();
+            
+            delete m_details;
+            size = strlen(details);
+            m_details = new char [size + 1];
+            
+            for(int i = 0; i < size; i++){
+                m_details[i] = details[i];
+            }
             
             istr >> m_price;
             istr.ignore();
@@ -77,6 +88,43 @@ namespace sdds{
         
         cout << endl;
     }
+
+RideRequest::RideRequest(const sdds::RideRequest &source) {
+    m_details = nullptr;
+    *this = source;
+}
+
+RideRequest::~RideRequest() { 
+    delete[] m_details;
+}
+
+sdds::RideRequest &RideRequest::operator=(const sdds::RideRequest &source)
+{
+    
+    if (this != &source)
+    {
+        delete[] m_details;
+        
+        strcpy(m_name, source.m_name);
+        m_price = source.m_price;
+        m_discount = source.m_discount;
+        
+        size_t size = strlen(source.m_details);
+        m_details = new char[size+1];
+        
+        for(int i = 0; i < size; i++)
+        {
+            m_details[i] = source.m_details[i];
+        }
+        
+        m_details[size] = '\0';
+        
+    }
+    
+    
+    return *this;
+}
+
 
     
 }

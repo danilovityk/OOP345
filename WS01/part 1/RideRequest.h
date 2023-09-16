@@ -10,12 +10,16 @@ class RideRequest{
     
 private:
     char m_name [10];
-    char m_details [25];
+    char* m_details;
+
     float m_price;
     bool m_discount;
     
 public:
     RideRequest();
+    RideRequest(const RideRequest& source);
+    ~RideRequest();
+    RideRequest& operator=(const RideRequest& source);
     std::istream& read(std::istream& istr);
     void display() const;
     
