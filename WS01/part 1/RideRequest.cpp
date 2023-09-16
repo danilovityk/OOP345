@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <string.h>
 #include "RideRequest.h"
 
 float g_taxrate{};
@@ -20,7 +21,8 @@ namespace sdds{
 
     std::istream &RideRequest::read(std::istream &istr) {
         if (istr){
-            size_t size = 0;
+            size_t sizet = 0;
+            
             char temp_flag;
             char details[100];
             
@@ -32,7 +34,8 @@ namespace sdds{
             istr.ignore();
             
             delete m_details;
-            size = strlen(details);
+            sizet = strlen(details);
+            int size = (int)sizet;
             m_details = new char [size + 1];
             
             for(int i = 0; i < size; i++){
@@ -109,7 +112,8 @@ sdds::RideRequest &RideRequest::operator=(const sdds::RideRequest &source)
         m_price = source.m_price;
         m_discount = source.m_discount;
         
-        size_t size = strlen(source.m_details);
+        size_t sizet = strlen(source.m_details);
+        int size = (int)sizet;
         m_details = new char[size+1];
         
         for(int i = 0; i < size; i++)
