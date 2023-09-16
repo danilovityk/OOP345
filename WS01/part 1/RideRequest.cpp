@@ -33,7 +33,7 @@ namespace sdds{
             istr.get(details, 100, ',');
             istr.ignore();
             
-            delete m_details;
+            delete[] m_details;
             sizet = strlen(details);
             int size = (int)sizet;
             m_details = new char [size + 1]{};
