@@ -22,13 +22,13 @@ std::ostream& operator<<(std::ostream& ostr, const Airport& airport){
 void Airport::display() const {
     if(m_code != nullptr)
     {
-        cout << setw(20) << setfill ('.') << right << "Airport Code :" << setw(30)<< setfill ('.') << left << m_code << endl;
-        cout << setw(20) << setfill ('.') << right << "Airport Name :" << setw(30) << setfill ('.') << left << m_name << endl;
-        cout << setw(20) << setfill ('.') << right << "Airport City :" << setw(30) << setfill ('.') << left << m_city << endl;
-        cout << setw(20) << setfill ('.') << right << "Airport State :" << setw(30) << setfill ('.') << left << m_state << endl;
-        cout << setw(20) << setfill ('.') << right << "Airport Country :" << setw(30) << setfill ('.') << left << m_country << endl;
-        cout << setw(20) << setfill ('.') << right << "Airport Latitude :" << setw(30) << setfill ('.') << left << m_latitude << endl;
-        cout << setw(20) << setfill ('.') << right << "Airport Longtitude :" << setw(30) << setfill ('.') << left << m_longtitude << endl;
+        cout << setw(20) << setfill ('.') << right << "Airport Code" << setw(3) << " : " <<  setw(30)<< setfill ('.') << left << m_code << endl;
+        cout << setw(20) << setfill ('.') << right << "Airport Name" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_name << endl;
+        cout << setw(20) << setfill ('.') << right << "Airport City" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_city << endl;
+        cout << setw(20) << setfill ('.') << right << "Airport State" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_state << endl;
+        cout << setw(20) << setfill ('.') << right << "Airport Country" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_country << endl;
+        cout << setw(20) << setfill ('.') << right << "Airport Latitude" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_latitude << endl;
+        cout << setw(20) << setfill ('.') << right << "Airport Longtitude" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_longtitude << endl;
         
     }else {
         cout << "Empty Airport" << endl;
@@ -56,11 +56,75 @@ AirportLog::AirportLog(const char *filepath) {
             }
         }
         
+        --counter;
+        
+        m_size = counter;
+        
     }else
     {
         cout << endl <<"file not opened (pasta with ketchup pizza with pineapples)" << endl;
     }
     
+    file.close();
+    file.open(filepath);
+    
+    if(file.is_open())
+    {
+        m_airports = new Airport[m_size];
+        
+        char ch{};
+        char code[20]{};
+        char name [100]{};
+        char city [100]{};
+        char state [100]{};
+        char country [100]{};
+        float latitude{};
+        float longtitude{};
+        
+        while (file.get(ch)) {
+            if (ch == '\n') {
+                break;
+            }
+        }
+        
+        for (int i = 0; i < m_size; i++){
+            
+            file.getline(code, 100, ',');
+            
+            file.getline(name, 100, ',');
+            
+            file.getline(city, 100, ',');
+            
+            file.getline(state, 100, ',');
+            
+            file.getline(country, 100, ',');
+            
+            file >> latitude;
+            file.ignore();
+            file >> longtitude;
+            file.ignore();
+            
+            m_airports[i].set(code, name, city, state, country, latitude, longtitude);
+        }
+        
+        
+        
+    }
+    
+    
+}
+
+Airport& Airport::set(const char* code, const char* name, const char* city, const char* state, const char* country, const float latitude, const float longtitude){
+    
+    deAloCopy(m_code, code);
+    deAloCopy(m_name, name);
+    deAloCopy(m_city, city);
+    deAloCopy(m_state, state);
+    deAloCopy(m_country, country);
+    m_latitude = latitude;
+    m_longtitude = longtitude;
+    
+    return *this;
 }
 
 void AirportLog::addAirport(const sdds::Airport &airport) {
@@ -152,7 +216,7 @@ AirportLog::operator size_t() const {
 
 
 
-void deAloCopy (char* destination, const char* source)
+void deAloCopy (char*& destination, const char* source)
 {
     if(destination != nullptr) delete destination;
     

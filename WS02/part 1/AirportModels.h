@@ -25,10 +25,11 @@ public:
     Airport& operator=(const Airport& source);
     Airport(const char* code, const char* name, const char* city, const char* state, const char* country, const float latitude, const float longtitude);
     Airport();
+    Airport& set(const char* code, const char* name, const char* city, const char* state, const char* country, const float latitude, const float longtitude);
 };
 
 std::ostream& operator<<(std::ostream& osrt, const Airport& airport);
-void deAloCopy (char* destination, const char* source);
+void deAloCopy (char*& destination, const char* source);
 
 
 class AirportLog{
