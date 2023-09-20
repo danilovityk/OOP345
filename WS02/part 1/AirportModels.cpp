@@ -234,6 +234,8 @@ void deAloCopy (char*& destination, const char* source)
         {
             destination[i] = source[i];
         }
+        
+        destination[size] = '\0';
     }
 }
 
