@@ -24,14 +24,14 @@ void Airport::display() const {
     {
         cout << setw(20) << setfill ('.') << right << "Airport Code" << setw(3) << " : " <<  setw(30)<< setfill ('.') << left << m_code << endl;
         cout << setw(20) << setfill ('.') << right << "Airport Name" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_name << endl;
-        cout << setw(20) << setfill ('.') << right << "Airport City" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_city << endl;
-        cout << setw(20) << setfill ('.') << right << "Airport State" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_state << endl;
-        cout << setw(20) << setfill ('.') << right << "Airport Country" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_country << endl;
-        cout << setw(20) << setfill ('.') << right << "Airport Latitude" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_latitude << endl;
-        cout << setw(20) << setfill ('.') << right << "Airport Longtitude" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_longtitude << endl;
+        cout << setw(20) << setfill ('.') << right << "City" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_city << endl;
+        cout << setw(20) << setfill ('.') << right << "State" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_state << endl;
+        cout << setw(20) << setfill ('.') << right << "Country" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_country << endl;
+        cout << setw(20) << setfill ('.') << right << "Latitude" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_latitude << endl;
+        cout << setw(20) << setfill ('.') << right << "Longtitude" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_longtitude << endl;
         
     }else {
-        cout << "Empty Airport" << endl;
+        cout << "Empty Airport";
     }
 };
 
@@ -176,7 +176,7 @@ sdds::AirportLog &AirportLog::findAirport(char *stateName, char *countryName) co
     int counter = 0;
     for (int i = 0; i < m_size; i++)
     {
-        if (strcmp(m_airports[i].getState(), stateName) && strcmp(m_airports[i].getCountry(), countryName))
+        if (strcmp(m_airports[i].getState(), stateName) == 0 && strcmp(m_airports[i].getCountry(), countryName) == 0)
         {
             result.addAirport(m_airports[i]);
         }
@@ -218,7 +218,9 @@ AirportLog::operator size_t() const {
 
 void deAloCopy (char*& destination, const char* source)
 {
-    if(destination != nullptr) delete destination;
+    if(destination != nullptr){
+        delete destination;
+    }
     
     int size = (int)(strlen(source));
     destination = new char [size + 1];
