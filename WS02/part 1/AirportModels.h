@@ -19,6 +19,7 @@ class Airport{
     float m_longtitude{};
     
 public:
+    ~Airport();
     char* getState() const;
     char* getCountry() const;
     void display() const;
@@ -40,8 +41,8 @@ public:
     AirportLog();
     AirportLog(const char* filepath);
     void addAirport(const Airport& airport);
-    AirportLog& findAirport(char* stateName, char* countryName) const;
-    Airport& operator[](size_t index) const;
+    AirportLog findAirport(const char* stateName,const char* countryName) const;
+    Airport operator[](size_t index) const;
     operator size_t() const;
     
 };

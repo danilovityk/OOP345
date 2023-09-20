@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <cstring>
 #include "AirportModels.h"
 
 using namespace std;
@@ -87,7 +88,7 @@ AirportLog::AirportLog(const char *filepath) {
             }
         }
         
-        for (int i = 0; i < m_size; i++){
+        for (int i = 0; i < (int)m_size; i++){
             
             file.getline(code, 100, ',');
             
@@ -133,7 +134,7 @@ void AirportLog::addAirport(const sdds::Airport &airport) {
     
     
     if (m_size != 0){
-        for (int i = 0; i < m_size; i++){
+        for (int i = 0; i < (int)m_size; i++){
             temp[i] = m_airports[i];
         }
         
@@ -169,12 +170,10 @@ Airport& Airport::operator=(const Airport& source){
     return *this;
 }
 
-sdds::AirportLog &AirportLog::findAirport(char *stateName, char *countryName) const {
+sdds::AirportLog AirportLog::findAirport(const char *stateName, const char *countryName) const {
     AirportLog result;
     
-    
-    int counter = 0;
-    for (int i = 0; i < m_size; i++)
+    for (int i = 0; i < (int)m_size; i++)
     {
         if (strcmp(m_airports[i].getState(), stateName) == 0 && strcmp(m_airports[i].getCountry(), countryName) == 0)
         {
@@ -192,7 +191,7 @@ char* Airport::getCountry() const{
     return m_country;
 }
 
-Airport &AirportLog::operator[](size_t index) const {
+Airport AirportLog::operator[](size_t index) const {
     
     bool flag = true;
     Airport emptyOne;
@@ -242,6 +241,16 @@ Airport::Airport(const char* code, const char* name, const char* city, const cha
     deAloCopy(m_country, country);
     m_latitude = latitude;
     m_longtitude = longtitude;
+}
+
+
+Airport::~Airport()
+{
+    delete[] m_code;
+    delete[] m_city;
+    delete[] m_name;
+    delete[] m_state;
+    delete[] m_country;
 }
 
 }
