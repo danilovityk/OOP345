@@ -223,6 +223,7 @@ void deAloCopy (char*& destination, const char* source)
 {
     if(destination != nullptr){
         delete destination;
+        destination = nullptr;
     }
     
     if (source != nullptr){
