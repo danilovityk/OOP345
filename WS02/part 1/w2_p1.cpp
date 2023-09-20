@@ -92,7 +92,7 @@ int main(int argc, char** argv)
     std::cout << "Number of matches found: " << size_t(found) << std::endl;
     std::cout << "First match found:\n" << found[0] << std::endl;
     std::cout << "Last match found:\n" << found[size_t(found) - 1] << std::endl;
-
+    
     printHeader("Find an non existing airport");
     sdds::AirportLog notfound = alog2.findAirport("Ontario", "Canada");
     std::cout << "Number of airports found: " << size_t(notfound) << std::endl;

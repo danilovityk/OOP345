@@ -155,7 +155,7 @@ void AirportLog::addAirport(const sdds::Airport &airport) {
 
 Airport& Airport::operator=(const Airport& source){
     
-    if(this != &source)
+    if(this != &source && source.m_code != nullptr)
     {
         deAloCopy(m_city, source.m_city);
         deAloCopy(m_code, source.m_code);
@@ -168,6 +168,10 @@ Airport& Airport::operator=(const Airport& source){
         
     }
     return *this;
+}
+
+Airport::Airport(const Airport& source){
+    *this = source;
 }
 
 sdds::AirportLog AirportLog::findAirport(const char *stateName, const char *countryName) const {
@@ -251,6 +255,12 @@ Airport::~Airport()
     delete[] m_name;
     delete[] m_state;
     delete[] m_country;
+    
+    
+}
+
+AirportLog::~AirportLog(){
+    delete[] m_airports;
 }
 
 }

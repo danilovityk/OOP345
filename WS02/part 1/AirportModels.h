@@ -20,6 +20,7 @@ class Airport{
     
 public:
     ~Airport();
+    Airport(const Airport& source);
     char* getState() const;
     char* getCountry() const;
     void display() const;
@@ -38,6 +39,7 @@ class AirportLog{
     Airport* m_airports = nullptr;
     size_t m_size{};
 public:
+    ~AirportLog();
     AirportLog();
     AirportLog(const char* filepath);
     void addAirport(const Airport& airport);
