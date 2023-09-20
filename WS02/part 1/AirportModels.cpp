@@ -227,7 +227,7 @@ void deAloCopy (char*& destination, const char* source)
     }
     
     if (source != nullptr){
-        int size = static_cast<int>(strlen(source));
+        int size = (int)(strlen(source));
         destination = new char [size + 1];
         
         for (int i = 0; i < size; i++)
