@@ -219,26 +219,20 @@ AirportLog::operator size_t() const {
 
 
 
-void deAloCopy(char*& destination, const char* source)
+void deAloCopy (char*& destination, const char* source)
 {
-    // Check if the destination is already allocated.
-    if (destination != nullptr) {
-        delete[] destination; // Use delete[] for arrays.
-        destination = nullptr; // Reset the pointer to nullptr.
+    if(destination != nullptr){
+        delete destination;
     }
     
-    // Check if the source is not nullptr.
-    if (source != nullptr) {
-        int size = static_cast<int>(strlen(source));
-        destination = new char[size + 1];
+    if (source != nullptr){
+        int size = (int)(strlen(source));
+        destination = new char [size + 1];
         
-        // Copy the source string to the destination.
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++)
+        {
             destination[i] = source[i];
         }
-        
-        // Null-terminate the destination string.
-        destination[size] = '\0';
     }
 }
 
