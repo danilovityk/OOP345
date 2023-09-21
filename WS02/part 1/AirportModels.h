@@ -1,9 +1,9 @@
-//
-//  AirportModels.hpp
-//  w2p2
-//
-//  Created by Danik on 19.09.2023.
-//
+
+//- Danylo Vityk
+//- 176326213
+//- dvityk@myseneca.ca
+//- Sep 20, 2023
+
 
 #ifndef SDDS_AIRPORTMODELS_H
 #define SDDS_AIRPORTMODELS_H

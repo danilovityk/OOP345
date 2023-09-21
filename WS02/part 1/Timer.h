@@ -1,4 +1,10 @@
 
+//- Danylo Vityk
+//- 176326213
+//- dvityk@myseneca.ca
+//- Sep 20, 2023
+
+
 #ifndef SDDS_TIMER_H
 #define SDDS_TIMER_H
 

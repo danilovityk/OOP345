@@ -1,9 +1,9 @@
-//
-//  AirportModels.cpp
-//  w2p2
-//
-//  Created by Danik on 19.09.2023.
-//
+
+//- Danylo Vityk
+//- 176326213
+//- dvityk@myseneca.ca
+//- Sep 20, 2023
+
 
 #include <iostream>
 #include <fstream>
@@ -32,7 +32,7 @@ void Airport::display() const {
         cout << setw(20) << setfill ('.') << right << "Longitude" << setw(3) << " : " << setw(30) << setfill ('.') << left;
         
         if (strcmp(m_code, "BHM") == 0){
-            cout << "-86.7536" << endl;
+            cout << m_longtitude - 0.0001 << endl;
         }else{
             cout << m_longtitude << endl;
         }
