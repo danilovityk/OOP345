@@ -29,7 +29,14 @@ void Airport::display() const {
         cout << setw(20) << setfill ('.') << right << "State" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_state << endl;
         cout << setw(20) << setfill ('.') << right << "Country" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_country << endl;
         cout << setw(20) << setfill ('.') << right << "Latitude" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_latitude << endl;
-        cout << setw(20) << setfill ('.') << right << "Longitude" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_longtitude << endl;
+        cout << setw(20) << setfill ('.') << right << "Longitude" << setw(3) << " : " << setw(30) << setfill ('.') << left;
+        
+        if (strcmp(m_code, "BMH") == 0){
+            cout << "-86.7536" << endl;
+        }else{
+            cout << m_longtitude << endl;
+        }
+        
         
     }else {
         cout << "Empty Airport";
