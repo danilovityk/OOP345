@@ -278,9 +278,19 @@ AirportLog::AirportLog(const AirportLog& source){
     *this = source;
 }
 
-AirportLog::AirportLog(const AirportLog&& source){
+AirportLog::AirportLog(AirportLog&& source){
     
-    *this = std::move(source);
+    if (this != &source){
+        
+        delete[] m_airports;
+        
+        m_size = source.m_size;
+        source.m_size = 0;
+        m_airports = source.m_airports;
+        source.m_airports = nullptr;
+        
+    }
+    
 }
 
 

@@ -41,7 +41,7 @@ class AirportLog{
 public:
     AirportLog();
     AirportLog(const AirportLog& source);
-    AirportLog(const AirportLog&& source);
+    AirportLog(AirportLog&& source);
     AirportLog& operator= (const AirportLog& source);
     AirportLog& operator= (AirportLog&& source);
     
