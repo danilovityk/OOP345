@@ -293,7 +293,7 @@ AirportLog& AirportLog::operator= (const AirportLog& source){
         
         m_airports = new Airport[m_size];
         
-        for(int i = 0; i < m_size; i ++){
+        for(int i = 0; i < (int)m_size; i ++){
             m_airports[i] = source.m_airports[i];
         }
         

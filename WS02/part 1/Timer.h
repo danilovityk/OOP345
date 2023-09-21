@@ -2,6 +2,8 @@
 #ifndef SDDS_TIMER_H
 #define SDDS_TIMER_H
 
+#include <chrono>
+
 namespace sdds{
 
 class Timer{
