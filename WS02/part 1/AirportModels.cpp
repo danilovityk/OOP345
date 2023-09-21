@@ -266,4 +266,63 @@ AirportLog::~AirportLog(){
     delete[] m_airports;
 }
 
+
+
+
+
+
+
+
+AirportLog::AirportLog(const AirportLog& source){
+    
+    *this = source;
+}
+
+AirportLog::AirportLog(const AirportLog&& source){
+    
+    *this = std::move(source);
+}
+
+
+AirportLog& AirportLog::operator= (const AirportLog& source){
+    
+    if(this != &source){
+        m_size = source.m_size;
+        
+        delete[] m_airports;
+        
+        m_airports = new Airport[m_size];
+        
+        for(int i = 0; i < m_size; i ++){
+            m_airports[i] = source.m_airports[i];
+        }
+        
+        
+    }
+    
+    return *this;
+}
+
+
+AirportLog& AirportLog::operator= (AirportLog&& source){
+    if (this != &source){
+        
+        delete[] m_airports;
+        
+        m_size = source.m_size;
+        source.m_size = 0;
+        m_airports = source.m_airports;
+        source.m_airports = nullptr;
+        
+    }
+    
+    return *this;
+}
+
+
+
+
+
+
+
 }

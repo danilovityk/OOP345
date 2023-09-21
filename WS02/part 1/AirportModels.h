@@ -39,13 +39,21 @@ class AirportLog{
     Airport* m_airports = nullptr;
     size_t m_size{};
 public:
-    ~AirportLog();
     AirportLog();
+    AirportLog(const AirportLog& source);
+    AirportLog(const AirportLog&& source);
+    AirportLog& operator= (const AirportLog& source);
+    AirportLog& operator= (AirportLog&& source);
+    
+    
+    
     AirportLog(const char* filepath);
     void addAirport(const Airport& airport);
     AirportLog findAirport(const char* stateName,const char* countryName) const;
     Airport operator[](size_t index) const;
     operator size_t() const;
+    
+    ~AirportLog();
     
 };
 
