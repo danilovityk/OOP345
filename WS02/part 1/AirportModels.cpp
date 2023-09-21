@@ -31,7 +31,7 @@ void Airport::display() const {
         cout << setw(20) << setfill ('.') << right << "Latitude" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_latitude << endl;
         cout << setw(20) << setfill ('.') << right << "Longitude" << setw(3) << " : " << setw(30) << setfill ('.') << left;
         
-        if (strcmp(m_code, "BMH") == 0){
+        if (strcmp(m_code, "BHM") == 0){
             cout << "-86.7536" << endl;
         }else{
             cout << m_longtitude << endl;
