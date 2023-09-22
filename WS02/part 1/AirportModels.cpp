@@ -29,12 +29,7 @@ void Airport::display() const {
         cout << setw(20) << setfill ('.') << right << "State" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_state << endl;
         cout << setw(20) << setfill ('.') << right << "Country" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_country << endl;
         cout << setw(20) << setfill ('.') << right << "Latitude" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_latitude << endl;
-        cout << setw(20) << setfill ('.') << right << "Longitude" << setw(3) << " : " << setw(30) << setfill ('.') << left;
-        
-        if (strcmp(m_code, "BHM") == 0){
-            cout << m_longtitude - 0.0001 << endl;
-        }else{
-            cout << m_longtitude << endl;
+        cout << setw(20) << setfill ('.') << right << "Longitude" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_longtitude << endl;
         }
         
         
@@ -86,8 +81,8 @@ AirportLog::AirportLog(const char *filepath) {
         char city [100]{};
         char state [100]{};
         char country [100]{};
-        float latitude{};
-        float longtitude{};
+        double latitude{};
+        double longtitude{};
         
         while (file.get(ch)) {
             if (ch == '\n') {
@@ -122,7 +117,7 @@ AirportLog::AirportLog(const char *filepath) {
     
 }
 
-Airport& Airport::set(const char* code, const char* name, const char* city, const char* state, const char* country, const float latitude, const float longtitude){
+Airport& Airport::set(const char* code, const char* name, const char* city, const char* state, const char* country, const double latitude, const double longtitude){
     
     deAloCopy(m_code, code);
     deAloCopy(m_name, name);
@@ -247,7 +242,7 @@ void deAloCopy (char*& destination, const char* source)
 
 Airport::Airport(){};
 
-Airport::Airport(const char* code, const char* name, const char* city, const char* state, const char* country, const float latitude, const float longtitude){
+Airport::Airport(const char* code, const char* name, const char* city, const char* state, const char* country, const double latitude, const double longtitude){
     deAloCopy(m_code, code);
     deAloCopy(m_name, name);
     deAloCopy(m_city, city);

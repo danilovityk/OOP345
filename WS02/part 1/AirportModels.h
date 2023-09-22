@@ -15,8 +15,8 @@ class Airport{
     char* m_city = nullptr;
     char* m_state = nullptr;
     char* m_country = nullptr;
-    float m_latitude{};
-    float m_longtitude{};
+    double m_latitude{};
+    double m_longtitude{};
     
 public:
     ~Airport();
@@ -25,9 +25,9 @@ public:
     char* getCountry() const;
     void display() const;
     Airport& operator=(const Airport& source);
-    Airport(const char* code, const char* name, const char* city, const char* state, const char* country, const float latitude, const float longtitude);
+    Airport(const char* code, const char* name, const char* city, const char* state, const char* country, const double latitude, const double longtitude);
     Airport();
-    Airport& set(const char* code, const char* name, const char* city, const char* state, const char* country, const float latitude, const float longtitude);
+    Airport& set(const char* code, const char* name, const char* city, const char* state, const char* country, const double latitude, const double longtitude);
 };
 
 std::ostream& operator<<(std::ostream& osrt, const Airport& airport);
