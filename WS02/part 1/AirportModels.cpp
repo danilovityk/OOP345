@@ -30,7 +30,6 @@ void Airport::display() const {
         cout << setw(20) << setfill ('.') << right << "Country" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_country << endl;
         cout << setw(20) << setfill ('.') << right << "Latitude" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_latitude << endl;
         cout << setw(20) << setfill ('.') << right << "Longitude" << setw(3) << " : " << setw(30) << setfill ('.') << left << m_longtitude << endl;
-        }
         
         
     }else {
