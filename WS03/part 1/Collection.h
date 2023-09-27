@@ -81,14 +81,34 @@ class Collection<Book, 10>{
     Book m_largestItem = {"", 10000, 1};
     unsigned m_size = 0;
 protected:
-    void setSmallestItem(const Book& item);
-    void setLargestItem(const Book& item);
+    
+    void setSmallestItem(const sdds::Book &item) {
+        if (item < m_smallestItem){
+            m_smallestItem = item;
+        }
+    }
+    void setLargestItem(const sdds::Book &item) {
+        if (item > m_largestItem){
+            m_largestItem = item;
+        };
+    }
+
 public:
-    Book& getSmallestItem();
-    Book& getLargestItem();
-    unsigned size() const;
-    unsigned capacity() const;
-//    void print(std::ostream ostr) const;
+    Book& getSmallestItem() {
+        return m_smallestItem;
+    }
+    
+    Book& getLargestItem() {
+        return m_largestItem;
+    }
+
+    unsigned int size() const {
+        return m_size;
+    }
+    unsigned int capacity() const {
+        return 10;
+    }
+    //    void print(std::ostream ostr) const;
 };
 
 
