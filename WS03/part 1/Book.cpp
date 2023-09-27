@@ -4,7 +4,8 @@
 //
 //  Created by Danik on 26.09.2023.
 //
-
+#include <iostream>
+#include <iomanip>
 #include "Book.h"
 using namespace std;
 
@@ -29,7 +30,16 @@ Book::Book(const std::string& title, unsigned nChapters, unsigned nPages){
 std::ostream& Book::print(std::ostream& os) const{
     if(*this)
     {
-        cout << m_title << ',' << m_numChapters << ',' << m_numPages << ',' << m_numPages / m_numChapters << endl;
+        if(m_numChapters < 10){os << " ";}
+        os << right << setw(49);
+        os << m_title << ',' <<
+        m_numChapters << ',' <<
+        m_numPages << " | " <<
+        setprecision(6) << fixed <<
+        '(' <<
+        double(m_numPages) / double(m_numChapters) <<
+        left << setw(5) << ')';
+        os << fixed << defaultfloat;
     }
     
     return os;
@@ -67,6 +77,11 @@ bool Book::operator<(const Book& rOp){
     
     
     return flag;
+}
+
+std::ostream& operator<<(std::ostream& os, const Book& bk){
+    bk.print(os);
+    return os;
 }
 
 

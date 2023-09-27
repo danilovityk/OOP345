@@ -8,7 +8,7 @@
 #ifndef SDDS_BOOK_H
 #define SDDS_BOOK_H
 
-#include <iostream>
+
 
 namespace sdds{
 
