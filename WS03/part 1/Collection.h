@@ -18,6 +18,7 @@ private:
     T m_items[C];
     static T m_smallestItem;
     static T m_largestItem;
+    unsigned m_size = 0;
 protected:
     
     void setSmallestItem(const T& item){
@@ -42,7 +43,7 @@ public:
     }
 
     unsigned size() const{
-        return sizeof(*m_items)/sizeof(T);
+        return m_size;
     }
     unsigned capacity() const{
         return C;
@@ -54,7 +55,7 @@ public:
             setLargestItem(element);
             
             
-            m_items[size()] = element;
+            m_items[m_size++] = element;
             flag = true;
             
         }else{
@@ -65,9 +66,10 @@ public:
     void print(std::ostream& ostr) const{
         ostr << "[";
         for(unsigned i = 0; i < size(); i++){
-            ostr << m_items[i] << ',';
+            ostr << m_items[i];
+            if(i < size() - 1){ostr << ',';}
         }
-        ostr << "]";
+        ostr << "]" << std::endl;
     }
 
 };
@@ -77,7 +79,7 @@ class Collection<Book, 10>{
     Book m_items[10];
     Book m_smallestItem = {"", 1, 10000};
     Book m_largestItem = {"", 10000, 1};
-    
+    unsigned m_size = 0;
 protected:
     void setSmallestItem(const Book& item);
     void setLargestItem(const Book& item);
