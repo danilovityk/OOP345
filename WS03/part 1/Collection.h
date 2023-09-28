@@ -15,12 +15,13 @@ namespace sdds{
 template <typename T, unsigned C>
 class Collection{
 private:
+    T m_items[C];
     static T m_smallestItem;
     static T m_largestItem;
     unsigned m_size = 0;
    
 protected:
-    T m_items[C];
+    
     T& operator[](unsigned index) {
         return m_items[index];
     }
@@ -82,12 +83,11 @@ public:
 
 template <>
 class Collection<Book, 10>{
-   
+    Book m_items[10];
     Book m_smallestItem = {"", 1, 10000};
     Book m_largestItem = {"", 10000, 1};
     unsigned m_size = 0;
 protected:
-    Book m_items[10];
     void setSmallestItem(const sdds::Book &item) {
         if (item.getRatio() < m_smallestItem.getRatio()){
             m_smallestItem = item;
@@ -156,12 +156,11 @@ public:
 
 template <>
 class Collection<Book, 72>{
-   
+    Book m_items[10];
     Book m_smallestItem = {"", 1, 10000};
     Book m_largestItem = {"", 10000, 1};
     unsigned m_size = 0;
 protected:
-    Book m_items[10];
     void setSmallestItem(const sdds::Book &item) {
         if (item.getRatio() < m_smallestItem.getRatio()){
             m_smallestItem = item;
