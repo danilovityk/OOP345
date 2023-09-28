@@ -7,7 +7,7 @@
 
 #ifndef SDDS_COLLECTION_H
 #define SDDS_COLLECTION_H
-
+#include <iomanip>
 #include "Book.h"
 
 namespace sdds{
@@ -106,14 +106,20 @@ protected:
     };
 public:
     void print(std::ostream& ostr) const{
-        ostr << "| ---------------------------------------------------------------------------|" << std::endl;
+        
+        ostr << "| " <<
+        std::setfill('-') << std::setw(75) <<
+        "-" << std::setfill(' ') <<
+        "|" << std::endl;
         for(unsigned i = 0; i < size(); i++){
             ostr<<"| ";
             ostr << m_items[i];
             ostr << " |" << std::endl;
         }
-        ostr << "| ---------------------------------------------------------------------------|" << std::endl;
-        
+        ostr << "| " <<
+        std::setfill('-') << std::setw(75) <<
+        "-" << std::setfill(' ') <<
+        "|" << std::endl;
     }
     
     Book& getSmallestItem() {
@@ -175,13 +181,20 @@ protected:
 
 public:
     void print(std::ostream& ostr) const{
-        ostr << "| ---------------------------------------------------------------------------|" << std::endl;
+        
+        ostr << "| " <<
+        std::setfill('-') << std::setw(75) <<
+        "-" << std::setfill(' ') <<
+        "|" << std::endl;
         for(unsigned i = 0; i < size(); i++){
             ostr<<"| ";
             ostr << m_items[i];
             ostr << " |" << std::endl;
         }
-        ostr << "| ---------------------------------------------------------------------------|" << std::endl;
+        ostr << "| " <<
+        std::setfill('-') << std::setw(75) <<
+        "-" << std::setfill(' ') <<
+        "|" << std::endl;
     }
     virtual bool operator+=(const Book& element){
         bool flag = true;
