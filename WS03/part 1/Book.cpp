@@ -50,7 +50,7 @@ std::ostream& Book::print(std::ostream& os) const{
 
 Book::operator bool() const{
     bool flag = false;
-    if (m_title[0] != '\0' && m_numPages > 0 && m_numChapters > 0){ // String boolean conversion fucked up
+    if (m_title[0] != '\0' && m_numPages > 0 && m_numChapters > 0){
         flag = true;
     }
     
