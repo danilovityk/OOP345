@@ -8,7 +8,7 @@
 #ifndef SDDS_BOOK_H
 #define SDDS_BOOK_H
 
-
+#include <iostream>
 
 namespace sdds{
 
@@ -34,11 +34,12 @@ namespace sdds{
         //
         // Write the implementations of these functions
         // in Book.cpp file
-        
+        double getRatio() const;
         std::ostream& print(std::ostream& os) const;
         operator bool() const;
         Book& operator=(const Book& rOp);
         bool operator<(const Book& rOp);
+        bool operator>(const Book& rOp);
     };
 
     std::ostream& operator<<(std::ostream& os, const Book& bk);

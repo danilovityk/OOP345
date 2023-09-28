@@ -4,7 +4,7 @@
 //
 //  Created by Danik on 26.09.2023.
 //
-#include <iostream>
+
 #include <iomanip>
 #include "Book.h"
 using namespace std;
@@ -73,7 +73,7 @@ Book& Book::operator=(const Book& rOp){
 bool Book::operator<(const Book& rOp){
     bool flag = false;
     
-    if(m_numChapters < rOp.m_numChapters){
+    if(getRatio() < rOp.getRatio()){
         flag = true;
     }
     
@@ -81,11 +81,26 @@ bool Book::operator<(const Book& rOp){
     return flag;
 }
 
+bool Book::operator>(const Book& rOp){
+    bool flag = false;
+    
+    if(getRatio() > rOp.getRatio()){
+        flag = true;
+    }
+    
+    
+    return flag;
+}
+
+
 std::ostream& operator<<(std::ostream& os, const Book& bk){
     bk.print(os);
     return os;
 }
 
+double Book::getRatio() const{
+    return double(m_numPages) / double(m_numChapters);
+}
 
 
 }
