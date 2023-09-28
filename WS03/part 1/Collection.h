@@ -1,9 +1,7 @@
-//
-//  Collection.hpp
-//  WS3
-//
-//  Created by Danik on 26.09.2023.
-//
+//- Danylo Vityk
+//- 176326213
+//- dvityk@myseneca.ca
+//- Sep 28, 2023
 
 #ifndef SDDS_COLLECTION_H
 #define SDDS_COLLECTION_H

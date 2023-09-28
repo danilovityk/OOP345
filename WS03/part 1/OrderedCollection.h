@@ -1,9 +1,7 @@
-//
-//  OrderedCollection.hpp
-//  WS3
-//
-//  Created by Danik on 27.09.2023.
-//
+//- Danylo Vityk
+//- 176326213
+//- dvityk@myseneca.ca
+//- Sep 28, 2023
 
 #ifndef SDDS_ORDEREDCOLLECTION_H
 #define SDDS_ORDEREDCOLLECTION_H
