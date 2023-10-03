@@ -39,14 +39,14 @@ Cheese::Cheese(const std::string &str) {
     m_price = stod(price);
     i++;
     
-    while(i != str.length()){
+    while(i != int(str.length())){
         m_features += str[i];
         i++;
     }
     
     
     m_name = trim(m_name);
-    for(int i = 0; i < m_features.length(); i++)
+    for(int i = 0; i < int(m_features.length()); i++)
     {
         if(m_features[i] == ' '){
             m_features.erase(i, 1);
@@ -54,7 +54,7 @@ Cheese::Cheese(const std::string &str) {
         }
     }
     
-    for(int i = 0; i < m_features.length(); i++){
+    for(int i = 0; i < int(m_features.length()); i++){
         if(m_features[i] == ','){
             m_features[i] = ' ';
         }
