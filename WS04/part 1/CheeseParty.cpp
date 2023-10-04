@@ -54,6 +54,8 @@ std::ostream& operator<<(std::ostream& os, CheeseParty& cheeseParty){
        else {
            
            os << "This party is just getting started!" << std::endl;
+           os << setfill('-') << setw(26) << '-' << endl;
+           os << setfill(' ');
        }
        return os;
 }

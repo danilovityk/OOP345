@@ -91,6 +91,8 @@ std::ostream& operator<<(std::ostream& os, CheeseShop& cheeseShop){
            os << setfill('-') << setw(26) << '-' << endl;
            os << setfill(' ');
            os << "This shop is out of cheese!" << std::endl;
+           os << setfill('-') << setw(26) << '-' << endl;
+           os << setfill(' ');
        }
        return os;
     
