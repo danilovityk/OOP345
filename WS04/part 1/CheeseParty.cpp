@@ -70,7 +70,7 @@ CheeseParty& CheeseParty::operator=(const CheeseParty& RoP) {
     if(this != &RoP) {
         m_size = RoP.m_size;
         m_cheeseArr = new const Cheese*[m_size];
-        for(size_t i = 0; i < int(m_size); i++) {
+        for(int i = 0; i < int(m_size); i++) {
             m_cheeseArr[i] = RoP.m_cheeseArr[i];
         }
     }
