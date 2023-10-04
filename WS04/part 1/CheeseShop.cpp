@@ -1,5 +1,8 @@
 #include <iostream>
+#include <iomanip>
 #include "CheeseShop.h"
+
+using namespace std;
 
 namespace sdds{
 
@@ -10,30 +13,19 @@ CheeseShop::CheeseShop(const std::string &name) {
 
 CheeseShop &CheeseShop::addCheese(const Cheese& cheeseSource) {
     
-    if(m_cheese != nullptr){
-        std::cout << sizeof(m_cheese) / sizeof(m_cheese[0]) << " - size before memory allocation" << std::endl;
-        const Cheese** cheese = new const Cheese*[((sizeof(**m_cheese) / sizeof(*m_cheese[0])) + 1)];
-        
-        
-            for (int i = 0; i < (sizeof(**m_cheese) / sizeof(*m_cheese[0])); i++){
-                cheese[i] = m_cheese[i];
-            }
-        
-        cheese[sizeof(**m_cheese) / sizeof(*m_cheese[0])] = &cheeseSource;
-        
-        std::cout << sizeof(**cheesxe) / sizeof(*cheese[0]) << std::endl;
-        for (int i = 0; i < (sizeof(**cheese) / sizeof(*cheese[0])); i++){
-            std::cout << cheese[i];
-        } //test loop
-            
-        
-        delete[] m_cheese;
-        m_cheese = cheese;
-    }else{
-        const Cheese** cheese = new const Cheese*[1];
-        cheese[0] = &cheeseSource;
-        m_cheese = cheese;
+    Cheese *addedCheese = new Cheese(cheeseSource);
+    
+    const Cheese** cheese = new const Cheese*[m_size + 1];
+    
+   
+    for (int i = 0; i < int(m_size); i++){
+        cheese[i] = m_cheese[i];
     }
+    
+    cheese[m_size] = addedCheese;
+    ++m_size;
+    delete[] m_cheese;
+    m_cheese = cheese;
     return *this;
     
 }
@@ -46,10 +38,10 @@ CheeseShop &CheeseShop::operator=(const CheeseShop &RoP) {
     if (this != &RoP){
         
         m_name = RoP.m_name;
+        m_size = RoP.m_size;
+        m_cheese = new const Cheese*[m_size];
         
-        m_cheese = new const Cheese*[sizeof(RoP.m_cheese) / sizeof(RoP.m_cheese[0])];
-        
-        for(int i = 0; i < sizeof(RoP.m_cheese) / sizeof(RoP.m_cheese[0]); i++){
+        for(int i = 0; i < int(m_size); i++){
             m_cheese[i] = RoP.m_cheese[i];
         }
         
@@ -67,6 +59,7 @@ CheeseShop &CheeseShop::operator=(CheeseShop &&RoP) {
     delete[] m_cheese;
     m_name = RoP.m_name;
     m_cheese = RoP.m_cheese;
+    m_size = RoP.m_size;
     
     RoP.m_name = "";
     RoP.m_cheese = nullptr;
@@ -82,11 +75,21 @@ CheeseShop::CheeseShop(CheeseShop &&source) {
 std::ostream& operator<<(std::ostream& os, CheeseShop& cheeseShop){
     
     if(cheeseShop.m_cheese) {
-           for(int i = 0; i < sizeof(cheeseShop.m_cheese) / sizeof(cheeseShop.m_cheese[0]); i++) {
+        os << setfill('-') << setw(26) << '-' << endl;
+        os << cheeseShop.m_name << endl;
+        os << setfill('-') << setw(26) << '-' << endl;
+        os << setfill(' ');
+           for(int i = 0; i < int(cheeseShop.m_size); i++) {
                os << *cheeseShop.m_cheese[i];
            }
+       
        }
+        
        else {
+           os << setfill('-') << setw(26) << '-' << endl;
+           os << cheeseShop.m_name << endl;
+           os << setfill('-') << setw(26) << '-' << endl;
+           os << setfill(' ');
            os << "This shop is out of cheese!" << std::endl;
        }
        return os;

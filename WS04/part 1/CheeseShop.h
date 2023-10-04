@@ -7,6 +7,7 @@ namespace sdds{
 class CheeseShop {
     std::string m_name{};
     const Cheese** m_cheese = nullptr;
+    size_t m_size = 0;
     
 public:
     CheeseShop() = default;
