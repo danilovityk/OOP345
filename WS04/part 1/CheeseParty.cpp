@@ -23,7 +23,6 @@ CheeseParty &CheeseParty::addCheese(const Cheese &addedElement) {
         ++m_size;
         
         delete[] m_cheeseArr;
-        
         m_cheeseArr = cheese;
     }
        return *this;
@@ -73,6 +72,7 @@ CheeseParty::CheeseParty(CheeseParty&& RoP) {
 CheeseParty& CheeseParty::operator=(const CheeseParty& RoP) {
     if(this != &RoP) {
         m_size = RoP.m_size;
+        delete[] m_cheeseArr;
         m_cheeseArr = new const Cheese*[m_size];
         for(int i = 0; i < int(m_size); i++) {
             m_cheeseArr[i] = RoP.m_cheeseArr[i];
