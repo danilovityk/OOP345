@@ -45,11 +45,13 @@ std::ostream& operator<<(std::ostream& os, CheeseParty& cheeseParty){
     os << setfill(' ');
     
     if(cheeseParty.m_cheeseArr) {
-           for(int i = 0; i < int(cheeseParty.m_size); i++) {
+        for(int i = 0; i < int(cheeseParty.m_size); i++) {
                
-               if (cheeseParty.m_cheeseArr[i]){ os << *cheeseParty.m_cheeseArr[i]; }
+            if (cheeseParty.m_cheeseArr[i]){ os << *cheeseParty.m_cheeseArr[i]; }
                
-           }
+        }
+        os << setfill('-') << setw(26) << '-' << endl;
+        os << setfill(' ');
        }
        else {
            

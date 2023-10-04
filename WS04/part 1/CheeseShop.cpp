@@ -79,10 +79,11 @@ std::ostream& operator<<(std::ostream& os, CheeseShop& cheeseShop){
         os << cheeseShop.m_name << endl;
         os << setfill('-') << setw(26) << '-' << endl;
         os << setfill(' ');
-           for(int i = 0; i < int(cheeseShop.m_size); i++) {
+        for(int i = 0; i < int(cheeseShop.m_size); i++) {
                os << *cheeseShop.m_cheese[i];
-           }
-       
+        }
+        os << setfill('-') << setw(26) << '-' << endl;
+        os << setfill(' ');
        }
         
        else {
