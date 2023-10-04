@@ -75,7 +75,7 @@ CheeseParty& CheeseParty::operator=(const CheeseParty& RoP) {
         delete[] m_cheeseArr;
         m_cheeseArr = new const Cheese*[m_size];
         for(int i = 0; i < int(m_size); i++) {
-            m_cheeseArr[i] = RoP.m_cheeseArr[i];
+            m_cheeseArr[i] = new Cheese(*RoP.m_cheeseArr[i]);
         }
     }
     return *this;

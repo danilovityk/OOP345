@@ -21,8 +21,8 @@ CheeseShop &CheeseShop::addCheese(const Cheese& cheeseSource) {
     for (int i = 0; i < int(m_size); i++){
         cheese[i] = m_cheese[i];
     }
-    const Cheese* addedPointer = addedCheese;
-    cheese[m_size] = addedPointer;
+    
+    cheese[m_size] = addedCheese;
     ++m_size;
     delete[] m_cheese;
     m_cheese = cheese;
