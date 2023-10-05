@@ -13,11 +13,11 @@ CheeseShop::CheeseShop(const std::string &name) {
 
 CheeseShop &CheeseShop::addCheese(const Cheese& cheeseSource) {
     
-    const Cheese *addedCheese = new const Cheese(cheeseSource);
-    m_cheeseDeall[dealloSize++] = addedCheese;
+    const Cheese* addedCheese = new const Cheese(cheeseSource);
     const Cheese** cheese = new const Cheese*[m_size + 1];
     
-   
+    addCheeseDeall(*addedCheese);
+    
     for (int i = 0; i < int(m_size); i++){
         cheese[i] = m_cheese[i];
     }
@@ -27,6 +27,21 @@ CheeseShop &CheeseShop::addCheese(const Cheese& cheeseSource) {
     delete[] m_cheese;
     m_cheese = cheese;
     return *this;
+    
+}
+
+void CheeseShop::addCheeseDeall(const Cheese& cheeseSource) {
+    
+    const Cheese** cheese = new const Cheese*[dealloSize + 1];
+    
+    for (int i = 0; i < int(m_size); i++){
+        cheese[i] = m_cheeseDeall[i];
+    }
+    
+    cheese[dealloSize++] = &cheeseSource;
+    
+    delete[] m_cheeseDeall;
+    m_cheeseDeall = cheese;
     
 }
 
