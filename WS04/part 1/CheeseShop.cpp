@@ -52,7 +52,7 @@ CheeseShop &CheeseShop::operator=(const CheeseShop &RoP) {
 
 CheeseShop::~CheeseShop() { 
     delete[] m_cheese;
-    for(int i = 0; i < dealloSize; i++){
+    for(int i = 0; i < int(dealloSize); i++){
         delete m_cheeseDeall[i];
     }
 }
