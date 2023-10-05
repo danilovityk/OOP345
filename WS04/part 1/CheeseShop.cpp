@@ -22,6 +22,10 @@ CheeseShop &CheeseShop::addCheese(const Cheese& cheeseSource) {
         cheese[i] = m_cheese[i];
     }
     
+//    for (int i = 0; i < int(m_size); i++) {
+//           delete m_cheese[i];
+//       }
+    
     cheese[m_size] = addedCheese;
     ++m_size;
     delete[] m_cheese;
