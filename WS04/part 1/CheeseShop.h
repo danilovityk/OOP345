@@ -7,6 +7,8 @@ namespace sdds{
 class CheeseShop {
     std::string m_name{};
     const Cheese** m_cheese = nullptr;
+    const Cheese* m_cheeseDeall[30];
+    size_t dealloSize = 0;
     size_t m_size = 0;
     
 public:

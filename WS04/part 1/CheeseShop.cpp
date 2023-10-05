@@ -14,7 +14,7 @@ CheeseShop::CheeseShop(const std::string &name) {
 CheeseShop &CheeseShop::addCheese(const Cheese& cheeseSource) {
     
     const Cheese *addedCheese = new const Cheese(cheeseSource);
-    
+    m_cheeseDeall[dealloSize++] = addedCheese;
     const Cheese** cheese = new const Cheese*[m_size + 1];
     
    
@@ -52,6 +52,9 @@ CheeseShop &CheeseShop::operator=(const CheeseShop &RoP) {
 
 CheeseShop::~CheeseShop() { 
     delete[] m_cheese;
+    for(int i = 0; i < dealloSize; i++){
+        delete m_cheeseDeall[i];
+    }
 }
 
 
