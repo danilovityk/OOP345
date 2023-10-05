@@ -70,6 +70,7 @@ CheeseShop::~CheeseShop() {
     for(int i = 0; i < int(dealloSize); i++){
         delete m_cheeseDeall[i];
     }
+    delete[] m_cheeseDeall;
 }
 
 
