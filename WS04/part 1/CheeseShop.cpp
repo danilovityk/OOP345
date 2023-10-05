@@ -1,3 +1,8 @@
+//- Danylo Vityk
+//- 176326213
+//- dvityk@myseneca.ca
+//- Oct 5, 2023
+
 #include <iostream>
 #include <iomanip>
 #include "CheeseShop.h"
@@ -32,16 +37,16 @@ CheeseShop &CheeseShop::addCheese(const Cheese& cheeseSource) {
 
 void CheeseShop::addCheeseDeall(const Cheese& cheeseSource) {
     
-    const Cheese** cheese = new const Cheese*[dealloSize + 1];
+    const Cheese** cheese = new const Cheese*[m_dealloSize + 1];
     
     for (int i = 0; i < int(m_size); i++){
-        cheese[i] = m_cheeseDeall[i];
+        cheese[i] = m_cheeseObjects[i];
     }
     
-    cheese[dealloSize++] = &cheeseSource;
+    cheese[m_dealloSize++] = &cheeseSource;
     
-    delete[] m_cheeseDeall;
-    m_cheeseDeall = cheese;
+    delete[] m_cheeseObjects;
+    m_cheeseObjects = cheese;
     
 }
 
@@ -67,10 +72,10 @@ CheeseShop &CheeseShop::operator=(const CheeseShop &RoP) {
 
 CheeseShop::~CheeseShop() { 
     delete[] m_cheese;
-    for(int i = 0; i < int(dealloSize); i++){
-        delete m_cheeseDeall[i];
+    for(int i = 0; i < int(m_dealloSize); i++){
+        delete m_cheeseObjects[i];
     }
-    delete[] m_cheeseDeall;
+    delete[] m_cheeseObjects;
 }
 
 

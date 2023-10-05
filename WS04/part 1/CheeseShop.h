@@ -1,3 +1,7 @@
+//- Danylo Vityk
+//- 176326213
+//- dvityk@myseneca.ca
+//- Oct 5, 2023
 
 #ifndef SDDS_CHEESESHOP_H
 #define SDDS_CHEESESHOP_H
@@ -7,8 +11,8 @@ namespace sdds{
 class CheeseShop {
     std::string m_name{};
     const Cheese** m_cheese = nullptr;
-    const Cheese** m_cheeseDeall = nullptr;
-    size_t dealloSize = 0;
+    const Cheese** m_cheeseObjects = nullptr;
+    size_t m_dealloSize = 0;
     size_t m_size = 0;
     
     void addCheeseDeall(const Cheese& cheeseSource);

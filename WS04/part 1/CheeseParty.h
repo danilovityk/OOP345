@@ -1,3 +1,8 @@
+//- Danylo Vityk
+//- 176326213
+//- dvityk@myseneca.ca
+//- Oct 5, 2023
+
 #ifndef SDDS_CHEESEPARTY_H
 #define SDDS_CHEESEPARTY_H
 #include "Cheese.h"
