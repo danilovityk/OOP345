@@ -83,6 +83,7 @@ CheeseParty& CheeseParty::operator=(const CheeseParty& RoP) {
 
 CheeseParty&CheeseParty::operator=(CheeseParty&& RoP) {
     if(this != &RoP) {
+        delete[] m_cheeseArr;
         m_size = RoP.m_size;
         m_cheeseArr = RoP.m_cheeseArr;
         RoP.m_cheeseArr = nullptr;
