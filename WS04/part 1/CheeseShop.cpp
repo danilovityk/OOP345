@@ -26,7 +26,6 @@ CheeseShop &CheeseShop::addCheese(const Cheese& cheeseSource) {
     }
     delete[] m_cheese;
     
-    
     cheese[m_size] = new Cheese (cheeseSource);
     ++m_size;
     m_cheese = cheese;
@@ -70,6 +69,9 @@ CheeseShop::~CheeseShop() {
 
 
 CheeseShop &CheeseShop::operator=(CheeseShop &&RoP) {
+    for(int i = 0; i < int(m_size); i++){
+        delete m_cheese[i];
+    }
     delete[] m_cheese;
     m_name = RoP.m_name;
     m_cheese = RoP.m_cheese;
