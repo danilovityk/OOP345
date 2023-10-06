@@ -18,37 +18,22 @@ CheeseShop::CheeseShop(const std::string &name) {
 
 CheeseShop &CheeseShop::addCheese(const Cheese& cheeseSource) {
     
-    const Cheese* addedCheese = new const Cheese(cheeseSource);
     const Cheese** cheese = new const Cheese*[m_size + 1];
     
-    addCheeseDeall(*addedCheese);
-    
     for (int i = 0; i < int(m_size); i++){
-        cheese[i] = m_cheese[i];
+        cheese[i] = new Cheese (*m_cheese[i]);
+        delete m_cheese[i];
     }
-    
-    cheese[m_size] = addedCheese;
-    ++m_size;
     delete[] m_cheese;
+    
+    
+    cheese[m_size] = new Cheese (cheeseSource);
+    ++m_size;
     m_cheese = cheese;
     return *this;
     
 }
 
-void CheeseShop::addCheeseDeall(const Cheese& cheeseSource) {
-    
-    const Cheese** cheese = new const Cheese*[m_dealloSize + 1];
-    
-    for (int i = 0; i < int(m_size); i++){
-        cheese[i] = m_cheeseObjects[i];
-    }
-    
-    cheese[m_dealloSize++] = &cheeseSource;
-    
-    delete[] m_cheeseObjects;
-    m_cheeseObjects = cheese;
-    
-}
 
 CheeseShop::CheeseShop(const CheeseShop &source) {
     *this = source;
@@ -56,13 +41,18 @@ CheeseShop::CheeseShop(const CheeseShop &source) {
 
 CheeseShop &CheeseShop::operator=(const CheeseShop &RoP) { 
     if (this != &RoP){
+        for (int i = 0; i < (int)m_size; i++){
+            delete m_cheese[i];
+        }
+        delete[] m_cheese;
         
         m_name = RoP.m_name;
         m_size = RoP.m_size;
-        delete[] m_cheese;
+        
+        
         m_cheese = new const Cheese*[m_size];
         for(int i = 0; i < int(m_size); i++){
-            m_cheese[i] = RoP.m_cheese[i];
+            m_cheese[i] = new Cheese (*RoP.m_cheese[i]);
         }
         
     }
@@ -72,10 +62,10 @@ CheeseShop &CheeseShop::operator=(const CheeseShop &RoP) {
 
 CheeseShop::~CheeseShop() { 
     delete[] m_cheese;
-    for(int i = 0; i < int(m_dealloSize); i++){
-        delete m_cheeseObjects[i];
-    }
-    delete[] m_cheeseObjects;
+//    for(int i = 0; i < int(m_dealloSize); i++){
+//        delete m_cheeseObjects[i];
+//    }
+//    delete[] m_cheeseObjects;
 }
 
 

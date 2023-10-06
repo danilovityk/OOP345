@@ -11,11 +11,8 @@ namespace sdds{
 class CheeseShop {
     std::string m_name{};
     const Cheese** m_cheese = nullptr;
-    const Cheese** m_cheeseObjects = nullptr;
-    size_t m_dealloSize = 0;
     size_t m_size = 0;
     
-    void addCheeseDeall(const Cheese& cheeseSource);
 public:
     CheeseShop() = default;
     CheeseShop(const CheeseShop& source);
