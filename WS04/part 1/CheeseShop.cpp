@@ -60,11 +60,12 @@ CheeseShop &CheeseShop::operator=(const CheeseShop &RoP) {
 }
 
 CheeseShop::~CheeseShop() { 
+    
+    for(int i = 0; i<m_size; i++){
+        delete m_cheese[i];
+    }
     delete[] m_cheese;
-//    for(int i = 0; i < int(m_dealloSize); i++){
-//        delete m_cheeseObjects[i];
-//    }
-//    delete[] m_cheeseObjects;
+
 }
 
 
@@ -74,9 +75,10 @@ CheeseShop &CheeseShop::operator=(CheeseShop &&RoP) {
     }
     delete[] m_cheese;
     m_name = RoP.m_name;
-    m_cheese = RoP.m_cheese;
     m_size = RoP.m_size;
+    m_cheese = RoP.m_cheese;
     
+    RoP.m_size = 0;
     RoP.m_name = "";
     RoP.m_cheese = nullptr;
     
