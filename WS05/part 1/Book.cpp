@@ -17,7 +17,7 @@ Book::Book(){
 }
 
 Book::Book(const std::string &strBook) {
-    int i = 0;
+    size_t i = 0;
     m_author = "";
         while(strBook[i] != ','){
             m_author += strBook[i];
