@@ -22,7 +22,7 @@ SpellChecker::SpellChecker(const char* filename) {
     for (int i = 0; i < ARRAY_SIZE; i++){
      
         std::getline(file, buffer);
-        int j = 0;
+        size_t j = 0;
         while(buffer[j] != ' '){
             m_badWords[i] += buffer[j];
             j++;
