@@ -7,8 +7,14 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include "Collection.h"
+#include "Collection.h"     // intentional
+#include "SpellChecker.h"
+#include "SpellChecker.h"   // intentional
 #include "Book.h"
-#include "Book.h" // intentional
+#include "Book.h"           // intentional
+#include "Movie.h"
+#include "Movie.h"          // intentional
 
 // Cheching if header guards exist and follow convention.
 #ifndef SDDS_BOOK_H
@@ -45,8 +51,7 @@ int main(int argc, char** argv)
 
           std::string bookString;
           
-          file.clear();
-          file.seekg(std::ios::beg);
+        
           do {
             std::getline(file, bookString);
             if (file) {

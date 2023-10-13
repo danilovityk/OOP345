@@ -1,6 +1,7 @@
 #ifndef SDDS_BOOK_H
 #define SDDS_BOOK_H
 
+#include "SpellChecker.h"
 
 namespace sdds{
 
@@ -20,6 +21,12 @@ public:
     const size_t& year() const;
     const std::string& country() const;
     const std::string& title() const;
+    
+    template <typename T>
+    void fixSpelling(T& spellChecker){
+        spellChecker(m_description);
+    }
+    
     friend std::ostream& operator<<(std::ostream& os, const Book& book) ;
 
 };
