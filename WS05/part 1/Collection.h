@@ -1,3 +1,8 @@
+// - Danylo Vityk
+// - 176326213
+// - dvityk@myseneca.ca
+// - Oct 14, 2023
+
 #ifndef SDDS_COLLECTION_H
 #define SDDS_COLLECTION_H
 

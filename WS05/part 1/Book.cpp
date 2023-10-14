@@ -1,3 +1,9 @@
+// - Danylo Vityk
+// - 176326213
+// - dvityk@myseneca.ca
+// - Oct 14, 2023
+
+
 #include <iostream>
 #include <iomanip>
 #include <string>

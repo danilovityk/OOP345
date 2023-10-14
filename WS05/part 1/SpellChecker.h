@@ -1,3 +1,9 @@
+// - Danylo Vityk
+// - 176326213
+// - dvityk@myseneca.ca
+// - Oct 14, 2023
+
+
 #ifndef SDDS_SPELLCHECKER_H
 #define SDDS_SPELLCHECKER_H
 #define ARRAY_SIZE 6
