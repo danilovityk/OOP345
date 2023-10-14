@@ -1,0 +1,13 @@
+// - Danylo Vityk
+// - 176326213
+// - dvityk@myseneca.ca
+// - Oct 14, 2023
+
+
+1. A functor is a function object that is used to implement more advanced or complicated logic. While lambda expression is a relatively small function object that is written inside another function. Lambda expressions are used to implement some small pieces of logic that are unnecessary to implement like a whole function or a functor. In this WS we have used a lambda expression to implement a piece of logic calculating the price of the passed parameter of a Book instance. But we used a functor to implement a spellchecker as it was a way more complex object.
+
+2. To avoid generating an exception in this case we can consruct a bad object with specified problem in the name variable. Client side would have then to check if the constructed object has correct attributes and if not, cerr<< the problem from the name variable of that object.
+
+3. I would make another file with functions that can read the file. I would just not make those functions very specific but rather set the parameter containing number of words in the string, the string itself that words have to be extracted from and a delimeter. I would also implement function that is deleting spaces from the beginning and the end of the extracted word.
+
+4. The default constructor is absolutely necessary, as usually compiler generates the default constructor automatically, but in our case we have a custom constructor created. If there is at least one custom cunstructor in the definition of the class the compiler does not generate default constructor anymore. Even if the default constructor of Book and Movie classes are not used by the main function, it is used when we are allocating memory for dynamic array in Collection functor. So the program would not compile without default constructor.
