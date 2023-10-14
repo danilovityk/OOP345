@@ -37,7 +37,7 @@ Movie::Movie(const std::string &strMovie) {
     m_year = stoi(buff);
     
     m_desc = "";
-    while(i <= strMovie.length()){
+    while(i < strMovie.length()){
         m_desc += strMovie[i];
         i++;
     }
@@ -57,7 +57,8 @@ std::ostream& operator<<(std::ostream& os, const Movie& movie) {
     os << setw(40) << right
     << movie.m_title << " | "
     << setw(4) << movie.m_year << " | "
-    << movie.m_desc << endl;
+    << movie.m_desc
+    << endl;
     return os;
 }
 
