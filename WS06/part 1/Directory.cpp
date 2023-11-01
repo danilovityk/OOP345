@@ -55,7 +55,7 @@ Resource* Directory::find(const std::string& name, const std::vector<OpFlags>& a
         if (item->type() == NodeType::DIR && arr.size() != 0){
             Directory* dir = dynamic_cast<Directory*>(item);
             result = dir->find(name, arr);
-            delete dir;
+            //delete dir;
             if(result != nullptr){
                 break;
             }
