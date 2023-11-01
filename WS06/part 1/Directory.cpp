@@ -71,6 +71,7 @@ Resource* Directory::find(const std::string& name, const std::vector<OpFlags>& a
     
 }
 Directory::~Directory(){
+    for (auto &item : m_contents) {delete item;}
     m_contents.clear();
 }
 
