@@ -10,6 +10,7 @@ class File : public Resource{
     
     std::string m_contents;
 public:
+    File();
     File(const std::string filename, const std::string represent = "");
     void update_parent_path(const std::string& filepath);
     NodeType type() const;

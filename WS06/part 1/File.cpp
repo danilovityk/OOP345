@@ -32,6 +32,9 @@ size_t File::size() const {
     return m_contents.length();
 }
 
+File::File(){
+    m_contents = "";
+}
 
 
 }
