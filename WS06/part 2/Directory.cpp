@@ -118,8 +118,8 @@ void Directory::display(std::ostream & os, const std::vector<FormatFlags> & arr)
         if(!arr.empty() && arr[0] == FormatFlags::LONG){
             
             os << right << setw(2);
-            if (item->count() != -1){ os << item->count(); }else{ os << "  "; }
-            os << " | " << right << setw(5) << item->size() << " bytes" << " |" << endl;
+            if (item->count() != -1){ os << setw(2) << right << item->count(); }else{ os << "  "; }
+            os << " |" << right << setw(5) << item->size() << " bytes" << " |" << endl;
         }else{
             os << endl;
         }
