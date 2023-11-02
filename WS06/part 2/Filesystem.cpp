@@ -6,10 +6,11 @@ using namespace std;
 namespace sdds{
 
 Filesystem::Filesystem(const std::string filename, const std::string root) {
-    m_root = new Directory(root);
+    
     fstream file;
     file.open(filename);
     if(file.is_open()){
+        m_root = new Directory(root);
         while(file){
             string buffer = "";
             string fileP = "";
