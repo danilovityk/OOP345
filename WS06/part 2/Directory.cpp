@@ -87,8 +87,13 @@ void Directory::remove(const std::string & name, const std::vector<OpFlags> & ar
     if (found != nullptr){
         if(found->type() == NodeType::DIR){
             if(arr.size() != 0){
-                auto it = std::find(m_contents.begin(), m_contents.end(), found);
-                m_contents.erase(it);
+                
+                for(auto i = m_contents.begin(); i != m_contents.end(); ++i){
+                    if(*i == found){
+                        m_contents.erase(i);
+                    }
+                }
+                
                 delete found;
             }else{
                 throw std::invalid_argument("NAME is a directory. Pass the recursive flag to delete directories.");
