@@ -113,13 +113,13 @@ void Directory::display(std::ostream & os, const std::vector<FormatFlags> & arr)
         }else{
             os << "F";
         }
-        os << " | " << setw(15) << item->name() << " |";
+        os << " | " << setw(15) << left << item->name() << " |";
         
         if(!arr.empty() && arr[0] == FormatFlags::LONG){
             
             os << right << setw(2);
             if (item->count() != -1){ os << item->count(); }else{ os << "  "; }
-            os << " | " << right << setw(10) << item->size() << " bytes" << " |" << endl;
+            os << " | " << right << setw(5) << item->size() << " bytes" << " |" << endl;
         }else{
             os << endl;
         }
