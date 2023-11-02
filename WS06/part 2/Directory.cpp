@@ -119,7 +119,7 @@ void Directory::display(std::ostream & os, const std::vector<FormatFlags> & arr)
             
             
             if (item->count() != -1){ os << " " << setw(2) << right << item->count(); }else{ os << "   "; }
-            os << " |" << right << setw(5) << item->size() << " bytes" << " |" << endl;
+            os << " |" << right << setw(5) << item->size() << " bytes" << " | " << endl;
         }else{
             os << endl;
         }
