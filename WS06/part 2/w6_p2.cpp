@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
     }
 
     sdds::Filesystem fs(argv[1]);
-
+    
     std::vector<sdds::FormatFlags> fflags;
     
     std::vector<sdds::OpFlags> oflags;

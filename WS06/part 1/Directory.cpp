@@ -1,3 +1,5 @@
+#include <iomanip>
+#include <iostream>
 #include "Directory.h"
 using namespace std;
 
@@ -79,5 +81,45 @@ Directory::Directory(){
     m_name = "";
     m_parent_path = "";
 }
+
+void Directory::remove(const std::string & name, const std::vector<OpFlags> & arr) {
+    Resource* found = find(name);
+    if (found != nullptr){
+        if(found->type() == NodeType::DIR){
+            if(arr.size() != 0){
+                auto it = std::find(m_contents.begin(), m_contents.end(), found);
+                m_contents.erase(it);
+                delete found;
+            }else{
+                throw std::invalid_argument("NAME is a directory. Pass the recursive flag to delete directories.");
+            }
+        }
+    }else{
+        throw name + " does not exist in " + m_name;
+    }
+    
+}
+
+void Directory::display(std::ostream & os, const std::vector<FormatFlags> & arr) const {
+    os << "Total size: " << size() << " bytes" << endl;
+    for(auto &item : m_contents){
+        if(item->type() == NodeType::DIR){
+            os << "D";
+        }else{
+            os << "F";
+        }
+        os << " | " << setw(15) << item->name() << " |";
+        
+        if(!arr.empty() && arr[0] == FormatFlags::LONG){
+            
+            os << right << setw(2);
+            if (item->count() != -1){ os << item->count(); }else{ os << "  "; }
+            os << " | " << right << setw(10) << item->size() << " bytes" << " |" << endl;
+        }else{
+            os << endl;
+        }
+    }
+}
+
 
 }
