@@ -1,0 +1,10 @@
+// - Danylo Vityk
+// - 176326213
+// - dvityk@myseneca.ca
+// - Nov 3, 2023
+
+1. We need to deallocate memory in the vector in this case, because this vector is only holding the addresses of the actual objects not objects themselves (vector template parameter is <Resource*> not <Resource>). FileSystem classs is controlling the lifetime of actual objects istead of the vector container in this case.
+
+2. We were using dynamic cast in this workshop to call specific member functions of Directory class thet are not defined by Resource interface class. Dynamic cast was reinterpreting the resource object to Directory object and after thet we were able to call Directory method on that particular object.
+
+3. We have to use pointers to objects in the vector in this case, because we are using Resource interface in return types of functions and we also have to use dynamic casting. The dynamic cast is usually used with pointers or references. Also we are returning pointer to Resource interface type while the pointer returned is actually pointing to the File or Directory class instance. If the vector was storing objects instead of using pointers this would result in object slicing which means that only attributes of Resource interface class would be stored in the object. This would cause data loss. Also we are dynamically casting pointers to objects, to be able to use Directory member functions and this has to be done with pointers.
