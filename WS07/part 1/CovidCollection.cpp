@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <iomanip>
+#include <list>
 #include "CovidCollection.h"
 
 using namespace std;
@@ -43,9 +44,37 @@ CovidCollection::CovidCollection(const std::string filename) {
     file.close();
 }
 
-void CovidCollection::display(std::ostream &out) const {
-    for_each(m_collection.begin(), m_collection.end(), [&](Covid item){out << item;});
+void CovidCollection::display(std::ostream &out, const std::string& country) const {
+    if (country != "ALL"){
+        for_each(m_collection.begin(), m_collection.end(), [&](Covid item){out << item;});
+    }else{
+        for_each(m_collection.begin(), m_collection.end(), [&](Covid item){if(item.m_country == country){ out << item;}});
+    }
+    
 }
+
+
+void CovidCollection::sort(const std::string &field) { 
+    <#code#>;
+}
+
+bool CovidCollection::inCollection(const std::string &variant, const std::string &country, unsigned int deaths) const { 
+    bool result = false;
+    
+    return result;
+}
+
+std::list<Covid> CovidCollection::getListForDeaths(unsigned int deaths) const {
+    std::list<Covid> result;
+    
+    
+    return result;
+}
+
+void CovidCollection::updateStatus() { 
+    <#code#>;
+}
+
 
 std::ostream& operator<<(std::ostream& out, const Covid& theCovid){
     
