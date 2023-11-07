@@ -1,6 +1,6 @@
 #ifndef SDDS_COVIDCOLLECTION_H
 #define SDDS_COVIDCOLLECTION_H
-
+#include <vector>
 namespace sdds{
 
 struct Covid{
