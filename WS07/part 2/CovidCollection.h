@@ -1,3 +1,8 @@
+// - Danylo Vityk
+// - 176326213
+// - dvityk@myseneca.ca
+// - Nov 7, 2023
+
 #ifndef SDDS_COVIDCOLLECTION_H
 #define SDDS_COVIDCOLLECTION_H
 #include <vector>
