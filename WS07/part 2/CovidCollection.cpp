@@ -107,13 +107,13 @@ void CovidCollection::sort(const std::string &field) {
 }
 
 bool CovidCollection::inCollection(const std::string &variant, const std::string &country, unsigned int deaths) const { 
-    bool result = false;
-    
-    std::for_each(m_collection.begin(), m_collection.end(), [&](const Covid& item){
-        if(item.m_country == country && item.m_variant == variant && item.m_numOfDeaths > deaths){result = true;}
+        
+    auto it = std::find_if(m_collection.begin(), m_collection.end(), [&](const Covid& item){
+        return item.m_country == country && item.m_variant == variant && item.m_numOfDeaths > deaths;
     });
     
-    return result;
+    return it != m_collection.end();
+    
 }
 
 std::list<Covid> CovidCollection::getListForDeaths(unsigned int deaths) const {
