@@ -119,11 +119,8 @@ bool CovidCollection::inCollection(const std::string &variant, const std::string
 std::list<Covid> CovidCollection::getListForDeaths(unsigned int deaths) const {
     std::list<Covid> result;
     
-    std::for_each(m_collection.begin(), m_collection.end(), [&](const Covid& item){
-        if(item.m_numOfDeaths >= deaths){
-            result.push_back(item);
-        }
-    });
+    std::copy_if(m_collection.begin(), m_collection.end(), back_inserter(result), [&](const Covid& item){
+        return item.m_numOfDeaths >= deaths; });
     
     return result;
 }

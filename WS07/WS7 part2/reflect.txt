@@ -1,0 +1,10 @@
+// - Danylo Vityk
+// - 176326213
+// - dvityk@myseneca.ca
+// - Nov 7, 2023
+
+1. In this workshop i have used for_each, find_if, copy_if and sort funtions. Find if here is used to find an element that matches the condition in the function that was cheking if the element exists in the colleciton at all. I have used copy_if fucntion to copy the elemets that match the condition into a new container that is later returned to the client. Also i have used the sort function to sort all the elements in the collection with a custom condition. I have used all of these algorithms the way i did because they meant to do those tasks and they help to save time on debugging and implementing already existing code.
+
+2. They help to save time that would have been spent on implementing some basic algorithms. The only thing that we are required to pass is the collection and the condition of the operation. They are also reliable and you will not run into problems/bugs related to the algorithm itself. They are also making the code more readible and understandable.
+
+3. We create an enum that would store all the field names and accept a field name as an enum field. That would help to detect any misspells during the compile time as the compiler would not allow to pass the non-existing enum argument.
