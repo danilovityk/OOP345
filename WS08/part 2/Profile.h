@@ -57,7 +57,7 @@ namespace sdds {
 		static bool Trace;
 
 		Profile() = default;
-
+        
 		bool load(std::ifstream& f) {
 			m_name.load(f);
 			m_address.load(f);
@@ -89,8 +89,13 @@ namespace sdds {
 
 		// TODO: add a function here to validate the address
 
-
-
+        void validateAddress() const{
+            if (!isalpha(m_address.postal_code[0]) || !isdigit(m_address.postal_code[1]) || !isalpha(m_address.postal_code[2]) || m_address.postal_code[3] != ' ' || !isdigit(m_address.postal_code[4]) || !isalpha(m_address.postal_code[5]) ||
+                !isdigit(m_address.postal_code[6]) || m_address.number < 0) {
+                throw "wrong postal code";
+            }
+            
+        }
 
 
 		friend std::ostream& operator<<(std::ostream& os, const Profile& p) {
