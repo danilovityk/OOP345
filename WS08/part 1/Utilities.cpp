@@ -24,10 +24,10 @@ namespace sdds {
                         aboba->validateAddress();
                         result += *aboba;
                     }catch(const char *){
-                        delete aboba;
+                       
                         //cerr << "addres is not valid in exclude raw function";
                     }
-                    
+                    delete aboba;
                     b = bannedProfiles.size();
                 }
             }
