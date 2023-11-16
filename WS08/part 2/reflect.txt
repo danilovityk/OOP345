@@ -1,0 +1,12 @@
+// - Danylo Vityk
+// - 176326213
+// - dvityk@myseneca.ca
+// - Nov 16, 2023
+
+
+1. The advantage of the smart pointer syntax is that user does not have to controll the objects lifetime which leaves less space for the error to occur in the program. Smart pointer is freeing the memory alocated for the object after the pointer is not needed anymore. In case of this workshop we did not have to handle the memory of the object when the program throws an exception.
+
+2. We did not have to free the dynamic mamory that was allocated for the object when the smart pointer was leaving the scope as well as our program was throwing an exception.
+
+3. So many copies are created in exclude functions because the += operator is making a copy of a fresh temporary object that was created in the exclude function. The temporary object is a copy itself and we can reduce the number of copies created by making a move operator +=. Instead of calling copy constructor move operator would just put a newly created copy in to the result container.
+

@@ -1,6 +1,11 @@
 // Workshop 8 - Smart Pointers
 // 2019/11 - Cornel
 
+// - Danylo Vityk
+// - 176326213
+// - dvityk@myseneca.ca
+// - Nov 16, 2023
+
 #include <memory>
 #include <utility>
 #include "DataBase.h"

@@ -1,4 +1,8 @@
 // Workshop 8 - Smart Pointers
+// - Danylo Vityk
+// - 176326213
+// - dvityk@myseneca.ca
+// - Nov 16, 2023
 
 #ifndef SDDS_PROFILE_H
 #define SDDS_PROFILE_H
@@ -81,6 +85,7 @@ namespace sdds {
 			if (Profile::Trace)
 				std::cout << "    CC [" << m_id << "][" << m_name << "] copy of [" << other.m_id << "]\n";
 		}
+        
 
 		~Profile() {
 			if (Profile::Trace)
