@@ -29,11 +29,12 @@ DataBase<Profile> excludeRaw(const DataBase<Profile>& allProfiles, const DataBas
             }
             if(!isBanned) {
                 Profile* prof = new Profile(allProfiles[i].m_name, allProfiles[i].m_address, allProfiles[i].m_age);
+                std::string abobaError = "*** Invalid Address ***";
                 try {
                     prof->validateAddress();
                     result += *prof;
                 } catch(...) {
-                    
+                    throw abobaError;
                 }
                 delete prof;
             }
