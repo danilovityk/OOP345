@@ -39,8 +39,8 @@ namespace sdds {
 		//       as a second operand.
 
         void operator+=(const T& source){
-            T* aboba = new T(source);
-            database.push_back(*aboba);
+            //T* aboba = new T(source);
+            database.push_back(source);
             
         }
 
