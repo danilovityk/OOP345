@@ -34,6 +34,7 @@ DataBase<Profile> excludeRaw(const DataBase<Profile>& allProfiles, const DataBas
                     prof->validateAddress();
                     result += *prof;
                 } catch(...) {
+                    delete prof;
                     throw abobaError;
                 }
                 delete prof;
