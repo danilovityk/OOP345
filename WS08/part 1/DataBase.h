@@ -38,7 +38,11 @@ namespace sdds {
 		// TODO: Overload the += operator with a raw pointer
 		//       as a second operand.
 
-
+        void operator+=(const T& source){
+            T* aboba = new T(source);
+            database.push_back(*aboba);
+            
+        }
 
 		void display(std::ostream& os) const {
 			os << std::fixed << std::setprecision(2);
