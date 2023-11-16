@@ -19,7 +19,7 @@ namespace sdds {
         for(size_t i = 0; i < allProfiles.size(); ++i){
             for(size_t b = 0; b < bannedProfiles.size(); ++b){
                 if(allProfiles[i].m_age != bannedProfiles[b].m_age && allProfiles[i].m_name.first_name != bannedProfiles[b].m_name.first_name && allProfiles[i].m_name.last_name != bannedProfiles[b].m_name.last_name){
-                    Profile* aboba = new Profile(allProfiles[i]);
+                    Profile* aboba = new Profile(allProfiles[i].m_name, allProfiles[i].m_address, allProfiles[i].m_age);
                     try{
                         aboba->validateAddress();
                         result += *aboba;
