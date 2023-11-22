@@ -52,10 +52,14 @@ namespace sdds
 		//         into variables "total_items" and "data". Don't forget to allocate
 		//         memory for "data".
 		//       The file is binary and has the format described in the specs.
-
-
-
-
+        std::fstream f(filename, std::ios::in | std::ios::binary);
+        
+        f.read(reinterpret_cast<char*>(&total_items), sizeof(total_items));
+        data = new int[total_items];
+        for(int i = 0; i < total_items; i++){
+            f.read(reinterpret_cast<char*>(&data[i]), sizeof(int));
+        }
+        
 
 		std::cout << "Item's count in file '"<< filename << "': " << total_items << std::endl;
 		std::cout << "  [" << data[0] << ", " << data[1] << ", " << data[2] << ", ... , "
@@ -69,7 +73,25 @@ namespace sdds
 
 	ProcessData::operator bool() const {
 		return total_items > 0 && data != nullptr;
-	}
+    }
+
+int ProcessData::operator()(const std::string &target_file, double &avg, double &var) { 
+    computeAvgFactor(data, total_items, total_items, avg);
+    computeVarFactor(data, total_items, total_items, avg, var);
+    std::fstream f (target_file, std::ios::out | std::ios::binary | std::ios::trunc);
+    
+    if(f){
+        f.write(reinterpret_cast<char*>(&total_items), sizeof(total_items));
+        for(int i = 0; i < total_items; i++){
+            f.write(reinterpret_cast<char*>(&data[i]), sizeof(int));
+        }
+    }else{
+        throw "could not open the file";
+    }
+    
+    return avg; // change
+}
+
 
 	// TODO You create implementation of function operator(). See workshop instructions for details.
 
