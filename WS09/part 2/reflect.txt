@@ -1,0 +1,10 @@
+// - Danylo Vityk
+// - 176326213
+// - dvityk@myseneca.ca
+// - Nov 23, 2023
+
+1. There was benefit in this workshop from using binary files in terms of speed of reading the numbers. We had to reed 500000 values from the file and if we were using regular text file, conversion of the value to binary would take way more time.
+
+2. std::bind fucntion i helpful here in terms of saving time which would be spent to fill in the arguments to the repeating function call. This also increases readibility and helps to prevent passing wrong arguments that can lead to unexpected behaviour of the program. In this workshop bing was usefull as we were creating multiple threads with a function that takes 5 and another funtion that takes 6 parameters. Bind is reducing the number of parameters passed every time to 3.
+
+3. In this workshop we were reading and processing 500000 values which is a solid amount that takes some time for CPU to process. The advantage of threading here was increasing the speed of execution of the program by executing the instructions in parallel manner instead of sequential execution. This makes different part of data to be processed a the same time making the time of processing smaller. We achieved multithreading by splitting up the data and running different parts of processing in different threads.

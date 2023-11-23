@@ -3,6 +3,11 @@
 // 2021/1/5 - Jeevan Pant
 // 2023/11/17 - Cornel
 
+// - Danylo Vityk
+// - 176326213
+// - dvityk@myseneca.ca
+// - Nov 23, 2023
+
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -108,34 +113,38 @@ namespace sdds
 int ProcessData::operator()(const std::string &target_file, double &avg, double &var) {
     
     std::vector<std::thread> avgThreads;
+    
     for (int i = 0; i < num_threads; ++i) {
         auto bind = std::bind(computeAvgFactor, data + p_indices[i], p_indices[i + 1] - p_indices[i], total_items, std::ref(averages[i]));
-        avgThreads.push_back(std::thread (bind));
+        avgThreads.push_back(std::thread(bind));
     }
+    
     for (auto& thread : avgThreads) {
+        
         thread.join();
     }
+    
     for(int i = 0; i < num_threads; i++) {
+        
         avg += averages[i];
     }
+    
     std::vector<std::thread> varThreads;
     for (int i = 0; i < num_threads; ++i) {
-        
         auto bind = std::bind(computeVarFactor, data + p_indices[i], p_indices[i + 1] - p_indices[i], total_items, avg, std::ref(variances[i]));
         varThreads.push_back(std::thread(bind));
     }
+    
     for (auto& thread : varThreads) {
+        
         thread.join();
     }
+    
     for(int i = 0; i < num_threads; i++) {
+        
         var += variances[i];
     }
   
-    
-    
-    
-//    computeAvgFactor(data, total_items, total_items, avg);
-//    computeVarFactor(data, total_items, total_items, avg, var);
     std::fstream f (target_file, std::ios::out | std::ios::binary | std::ios::trunc);
     
     if(f){
@@ -147,7 +156,7 @@ int ProcessData::operator()(const std::string &target_file, double &avg, double 
         throw "could not open the file";
     }
     
-    return avg; // change
+    return avg;
 }
 
 
