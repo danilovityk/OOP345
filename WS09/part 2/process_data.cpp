@@ -9,6 +9,7 @@
 #include <functional>
 #include <vector>
 #include <thread>
+#include <future>
 #include "process_data.h"
 
 namespace sdds
@@ -53,7 +54,13 @@ namespace sdds
 		//         memory for "data".
 		//       The file is binary and has the format described in the specs.
 
-
+        std::fstream f(filename, std::ios::in | std::ios::binary);
+        
+        f.read(reinterpret_cast<char*>(&total_items), sizeof(total_items));
+        data = new int[total_items];
+        for(int i = 0; i < total_items; i++){
+            f.read(reinterpret_cast<char*>(&data[i]), sizeof(int));
+        }
 
 
 
@@ -98,7 +105,50 @@ namespace sdds
 	// Also, read the workshop instruction.
 
 
-
+int ProcessData::operator()(const std::string &target_file, double &avg, double &var) {
+    
+    std::vector<std::thread> avgThreads;
+    for (size_t i = 0; i < num_threads; ++i) {
+        auto aboba = std::bind(computeAvgFactor, data + p_indices[i], p_indices[i + 1] - p_indices[i], total_items, std::ref(averages[i]));
+        avgThreads.push_back(std::thread (aboba));
+    }
+    for (auto& thread : avgThreads) {
+        thread.join();
+    }
+    for(int i = 0; i < num_threads; i++) {
+        avg += averages[i];
+    }
+    std::vector<std::thread> varThreads;
+    for (size_t i = 0; i < num_threads; ++i) {
+        
+        auto aboba = std::bind(computeVarFactor, data + p_indices[i], p_indices[i + 1] - p_indices[i], total_items, avg, std::ref(variances[i]));
+        varThreads.push_back(std::thread(aboba));
+    }
+    for (auto& thread : varThreads) {
+        thread.join();
+    }
+    for(int i = 0; i < num_threads; i++) {
+        var += variances[i];
+    }
+  
+    
+    
+    
+//    computeAvgFactor(data, total_items, total_items, avg);
+//    computeVarFactor(data, total_items, total_items, avg, var);
+    std::fstream f (target_file, std::ios::out | std::ios::binary | std::ios::trunc);
+    
+    if(f){
+        f.write(reinterpret_cast<char*>(&total_items), sizeof(total_items));
+        for(int i = 0; i < total_items; i++){
+            f.write(reinterpret_cast<char*>(&data[i]), sizeof(int));
+        }
+    }else{
+        throw "could not open the file";
+    }
+    
+    return avg; // change
+}
 
 
 

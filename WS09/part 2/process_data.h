@@ -6,7 +6,7 @@
 #ifndef SDDS_PROCESSDATA_H
 #define SDDS_PROCESSDATA_H
 
-#include<string>
+#include <string>
 
 namespace sdds {
 	void computeAvgFactor(const int* arr, int size, int divisor, double& avg);
