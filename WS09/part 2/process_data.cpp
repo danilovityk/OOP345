@@ -108,9 +108,9 @@ namespace sdds
 int ProcessData::operator()(const std::string &target_file, double &avg, double &var) {
     
     std::vector<std::thread> avgThreads;
-    for (size_t i = 0; i < num_threads; ++i) {
-        auto aboba = std::bind(computeAvgFactor, data + p_indices[i], p_indices[i + 1] - p_indices[i], total_items, std::ref(averages[i]));
-        avgThreads.push_back(std::thread (aboba));
+    for (int i = 0; i < num_threads; ++i) {
+        auto bind = std::bind(computeAvgFactor, data + p_indices[i], p_indices[i + 1] - p_indices[i], total_items, std::ref(averages[i]));
+        avgThreads.push_back(std::thread (bind));
     }
     for (auto& thread : avgThreads) {
         thread.join();
@@ -119,10 +119,10 @@ int ProcessData::operator()(const std::string &target_file, double &avg, double 
         avg += averages[i];
     }
     std::vector<std::thread> varThreads;
-    for (size_t i = 0; i < num_threads; ++i) {
+    for (int i = 0; i < num_threads; ++i) {
         
-        auto aboba = std::bind(computeVarFactor, data + p_indices[i], p_indices[i + 1] - p_indices[i], total_items, avg, std::ref(variances[i]));
-        varThreads.push_back(std::thread(aboba));
+        auto bind = std::bind(computeVarFactor, data + p_indices[i], p_indices[i + 1] - p_indices[i], total_items, avg, std::ref(variances[i]));
+        varThreads.push_back(std::thread(bind));
     }
     for (auto& thread : varThreads) {
         thread.join();
